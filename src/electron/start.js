@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, Tray, Menu } = require('electron')
 
 const path = require('path')
 const url = require('url')
@@ -72,6 +72,8 @@ if (handleSquirrelEvent(app)) {
 }
 
 let mainWindow
+let tray
+let isQuiting
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -91,10 +93,34 @@ function createWindow() {
       }),
   )
 
-  mainWindow.on('closed', () => {
-    mainWindow = null
-  })
+  tray = new Tray(path.join(__dirname, 'tray.png'));
+
+  tray.setContextMenu(Menu.buildFromTemplate([
+    {
+      label: 'Show App', click: function () {
+        window.show();
+      }
+    },
+    {
+      label: 'Quit', click: function () {
+        isQuiting = true;
+        app.quit();
+      }
+    }
+  ]));
+
+  mainWindow.on('close', function (event) {
+    if (!isQuiting) {
+      event.preventDefault();
+      window.hide();
+      event.returnValue = false;
+    }
+  });
 }
+
+app.on('before-quit', function () {
+  isQuiting = true;
+});
 
 app.on('ready', createWindow)
 
