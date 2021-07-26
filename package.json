@@ -81,28 +81,42 @@
     "forge": {
       "packagerConfig": {
         "icon": "./public/logo512.png",
-        "asar": true
+        "name": "electron_music_player",
+        "executableName": "Electron Music Player",
+        "asar": true,
+        "bin": "Electron Music Player"
       },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "electron_music_player"
-          }
+          "config": {}
         },
         {
           "name": "@electron-forge/maker-zip",
           "platforms": [
             "darwin"
-          ]
+          ],
+          "config": {
+            "name": "electron_music_player",
+            "executableName": "Electron Music Player",
+            "bin": "Electron Music Player"
+          }
         },
         {
           "name": "@electron-forge/maker-deb",
-          "config": {}
+          "config": {
+            "name": "electron_music_player",
+            "executableName": "Electron Music Player",
+            "bin": "Electron Music Player"
+          }
         },
         {
           "name": "@electron-forge/maker-rpm",
-          "config": {}
+          "config": {
+            "name": "electron_music_player",
+            "executableName": "Electron Music Player",
+            "bin": "Electron Music Player"
+          }
         }
       ]
     }
