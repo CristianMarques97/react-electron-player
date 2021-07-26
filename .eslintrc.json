@@ -1,5 +1,4 @@
-{
-  "env": {
+{   "env": {
     "browser": true,
     "commonjs": true,
     "es6": true,
@@ -24,6 +23,6 @@
     "semi": ["error", "never"]
   },
   "parser": "babel-eslint",
-  "extends": "airbnb",
+  "extends": ["airbnb"],
   "plugins": ["react", "jsx-a11y", "import"]
 }

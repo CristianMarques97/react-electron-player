@@ -31,13 +31,9 @@
     "electron-builder": "^22.11.7",
     "electron-squirrel-startup": "^1.0.0",
     "electron-winstaller": "^5.0.0",
-    "eslint": "^7.31.0",
-    "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.24.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-mp3-player": "^0.8.2",
+    "react-player": "^2.9.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
@@ -49,7 +45,13 @@
     "@electron-forge/maker-zip": "^6.0.0-beta.58",
     "electron": "^13.1.7",
     "electron-builder": "^22.11.7",
-    "electron-winstaller": "^5.0.0"
+    "electron-winstaller": "^5.0.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^1.7.0"
   },
   "eslintConfig": {
     "extends": [
