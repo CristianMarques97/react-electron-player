@@ -1,4 +1,6 @@
-const { app, BrowserWindow, Tray, Menu } = require('electron')
+const {
+  app, BrowserWindow, Tray, Menu,
+} = require('electron')
 
 const path = require('path')
 const url = require('url')
@@ -71,28 +73,15 @@ if (handleSquirrelEvent(app)) {
   return
 }
 
-let mainWindow
-let tray
-let isQuiting
+let window;
+let isQuiting;
+let tray;
+
+app.on('before-quit', function () {
+  isQuiting = true;
+});
 
 function createWindow() {
-  mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      nodeIntegration: true,
-    },
-  })
-
-  mainWindow.loadURL(
-    process.env.ELECTRON_START_URL
-      || url.format({
-        pathname: path.join(__dirname, '/../../build/index.html'),
-        protocol: 'file:',
-        slashes: true,
-      }),
-  )
-
   tray = new Tray(path.join(__dirname, 'tray.png'));
 
   tray.setContextMenu(Menu.buildFromTemplate([
@@ -109,18 +98,33 @@ function createWindow() {
     }
   ]));
 
-  mainWindow.on('close', function (event) {
+  window = new BrowserWindow({
+    width: 850,
+    height: 450,
+    show: false,
+  });
+
+  window.on('close', function (event) {
     if (!isQuiting) {
       event.preventDefault();
       window.hide();
       event.returnValue = false;
     }
   });
+
+  window.loadURL(
+    process.env.ELECTRON_START_URL
+      || url.format({
+        pathname: path.join(__dirname, '/../../build/index.html'),
+        protocol: 'file:',
+        slashes: true,
+      }),
+  )
 }
 
-app.on('before-quit', function () {
-  isQuiting = true;
-});
+app.on('before-quit', () => {
+  isQuiting = true
+})
 
 app.on('ready', createWindow)
 
