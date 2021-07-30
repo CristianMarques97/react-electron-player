@@ -82,7 +82,7 @@ app.on('before-quit', function () {
 });
 
 function createWindow() {
-  tray = new Tray(path.join(__dirname, 'tray.png'));
+  tray = new Tray(path.join(__dirname, '/../../assets/tray.png'));
 
   tray.setContextMenu(Menu.buildFromTemplate([
     {

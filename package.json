@@ -24,6 +24,7 @@
     "make-mac": "npx @electron-forge/cli make --platform darwin"
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -31,8 +32,8 @@
     "electron-builder": "^22.11.7",
     "electron-squirrel-startup": "^1.0.0",
     "electron-winstaller": "^5.0.0",
-    "react": "^17.0.2",
     "music-metadata": "^7.11.0",
+    "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-player": "^2.9.0",
     "react-scripts": "4.0.3",
@@ -55,10 +56,7 @@
     "eslint-plugin-react-hooks": "^1.7.0"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": []
   },
   "browserslist": {
     "production": [
@@ -81,7 +79,7 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "icon": "./public/logo512.png",
+        "icon": "./assets/logo512.png",
         "name": "electron_music_player",
         "executableName": "Electron Music Player",
         "asar": true,
