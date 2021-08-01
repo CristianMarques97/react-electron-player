@@ -16,6 +16,8 @@ build macOS package -> npm run make-mac
 # playlist.json example
 ![image](https://user-images.githubusercontent.com/46373143/127787675-9d7c411c-0bfb-4558-b79c-9f3b5ce24740.png)
 
+# playlist.json boilerplate
+
 {
   "name": "",
   "description": "",
