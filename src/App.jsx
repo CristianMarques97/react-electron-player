@@ -1,26 +1,26 @@
-import axios from "axios";
-import React from "react";
-import "./App.css";
-import PlaylistView from "./app/components/playlist/PlaylistView";
-import MusicEnvironment from "./app/variables/MusicEnvironment";
+import {
+  CssBaseline,
+  ThemeProvider,
+  useTheme,
+} from "@material-ui/core";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import Routes from "./app/router/routes";
+import { persistor, store } from "./app/store";
+import darkTheme from "./app/theme/darkTheme";
+import "./i18n";
 
 function App() {
-  const [playlist, setPlaylist] = React.useState("");
-
-  const fetchMusics = async () => {
-    const { data: playlist } = await axios.get(
-      `${MusicEnvironment.MusicRepositoryUrl}playlist.json`
-    );
-    setPlaylist(playlist);
-  };
-  React.useEffect(() => {
-    fetchMusics();
-  }, []);
-
+  const theme = useTheme();
   return (
-    <div className="App">
-      <PlaylistView playlist={playlist} />
-    </div>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <ThemeProvider theme={darkTheme}>
+          <CssBaseline />
+          <Routes />
+        </ThemeProvider>
+      </PersistGate>
+    </Provider>
   );
 }
 
