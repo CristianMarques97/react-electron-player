@@ -12,7 +12,8 @@ app.on("before-quit", function () {
 });
 
 function createWindow() {
-  tray = new Tray(path.join(__dirname, "/../assets/tray.png"));
+
+  tray = new Tray(path.join(__dirname, "/assets/tray.png"));
 
   tray.setContextMenu(
     Menu.buildFromTemplate([
@@ -33,10 +34,10 @@ function createWindow() {
   );
 
   window = new BrowserWindow({
-    width: 850,
-    height: 450,
-    minWidth: 850,
-    minHeight: 500,
+    width: 1280,
+    height: 720,
+    minWidth: 900,
+    minHeight: 600,
     show: false,
   });
 
@@ -51,7 +52,7 @@ function createWindow() {
   window.loadURL(
     process.env.ELECTRON_START_URL ||
       url.format({
-        pathname: path.join(__dirname, "/../build/index.html"),
+        pathname: path.join(__dirname, "/build/index.html"),
         protocol: "file:",
         slashes: true,
       })

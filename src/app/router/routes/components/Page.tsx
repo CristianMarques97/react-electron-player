@@ -1,12 +1,14 @@
 import { Route } from "react-router-dom";
 
 interface PageProps {
+  exact?: boolean;
   LayoutManager: any;
   Component: any;
   needAuthentication?: boolean;
   path: string;
 }
 export default function Page({
+  exact,
   LayoutManager,
   Component,
   needAuthentication,
@@ -14,6 +16,7 @@ export default function Page({
 }: PageProps) {
   return (
     <Route
+      {...exact}
       path={path}
       render={(matchProps) => (
         <LayoutManager>

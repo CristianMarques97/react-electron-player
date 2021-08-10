@@ -4,6 +4,7 @@ import { LOGIN } from "./AuthAction";
 const initialState = {
   token: "",
   singned: true,
+  user: ""
 };
 
 export default function AuthReducer(state = initialState, { type, payload }: ActionProps
