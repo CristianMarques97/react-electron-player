@@ -6,7 +6,10 @@ export default makeStyles((theme) => ({
         paddingBottom: theme.spacing(8),
         paddingTop: theme.spacing(6),
         height: '100vh',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        [theme.breakpoints.down('sm')]: {
+            padding: theme.spacing(2),
+          },
     },
     center: {
         display: 'flex',

@@ -26,8 +26,8 @@ export default function CompanyTokenView({ history }: any) {
   return (
     <Box className={classes.root}>
       <Grid container>
-        <Grid item xs={3} />
-        <Grid item xs={6} className={classes.center}>
+        <Grid item xs={1} md={3} />
+        <Grid item xs={10} md={6} className={classes.center}>
           <Card className={classes.card}>
             <Box className={classes.logoBox}>
               <img
@@ -133,7 +133,7 @@ export default function CompanyTokenView({ history }: any) {
             </Box>
           </Card>
         </Grid>
-        <Grid item xs={3} />
+        <Grid item xs={1} md={3} />
       </Grid>
     </Box>
   );
