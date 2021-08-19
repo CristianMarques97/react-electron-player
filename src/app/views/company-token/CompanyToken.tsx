@@ -111,7 +111,6 @@ export default function CompanyTokenView({ history }: any) {
             <Typography className={classes.topSpacing} />
             <Box className={classes.topSpacing}>
               <Grid container spacing={1}>
-                ka
                 <Grid item xs={4} md={3} />
                 <Grid item xs={4} md={6}>
                   <SubmitButton
