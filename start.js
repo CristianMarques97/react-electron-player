@@ -13,7 +13,7 @@ app.on("before-quit", function () {
 
 function createWindow() {
 
-  tray = new Tray(path.join(__dirname, "/assets/tray.png"));
+  tray = new Tray(path.join(__dirname, "src/assets/tray.png"));
 
   tray.setContextMenu(
     Menu.buildFromTemplate([
@@ -42,7 +42,7 @@ function createWindow() {
     frame: false,
     darkTheme: true,
     webPreferences: {
-      devTools: true,
+      devTools: false,
       nodeIntegration: true,
       nodeIntegrationInWorker: true
     }

@@ -12,7 +12,7 @@ i18n
     {
       fallbackLng: "pt-BR",
       backend: {
-        loadPath: `${__dirname}/locales/{{lng}}/{{ns}}/translation.json`,
+        loadPath: `${AppLocalization.URL}{{lng}}/translation.json`,
       },
       debug: false,
       interpolation: {
