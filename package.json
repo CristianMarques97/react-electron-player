@@ -73,10 +73,7 @@
   },
   "build": {
     "appId": "com.electron.electron-with-create-react-app",
-    "files": [
-      "locales/",
-      "assets"
-    ],
+    "files": ["assets", "locales", "fonts"],
     "win": {
       "iconUrl": "https://cdn2.iconfinder.com/data/icons/designer-skills/128/react-256.png"
     }

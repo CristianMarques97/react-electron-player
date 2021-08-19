@@ -8,6 +8,7 @@ import {
 import React, { Suspense } from "react";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import AppFrame from "./app/components/appBar/AppFrame";
 import history from "./app/router/history";
 import Routes from "./app/router/routes";
 import { persistor, store } from "./app/store";
@@ -30,6 +31,7 @@ function App() {
         <PersistGate persistor={persistor}>
           <ThemeProvider theme={darkTheme}>
             <CssBaseline />
+            <AppFrame />
             <Routes />
           </ThemeProvider>
         </PersistGate>

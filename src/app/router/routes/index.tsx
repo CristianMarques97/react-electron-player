@@ -1,16 +1,5 @@
 import React from "react";
-import {
-  Router,
-  Redirect,
-  Switch,
-  Route,
-  HashRouter,
-  MemoryRouter,
-} from "react-router-dom";
-import BlankLayout from "../../layoutManagers/Blank";
-import NotFoundView from "../../views/notFound/NotFound";
-
-import history from "../history";
+import { MemoryRouter } from "react-router-dom";
 import AppRoutes from "./pages";
 
 export default function Routes() {

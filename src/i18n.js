@@ -4,7 +4,6 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 import AppLocalization from './app/constants/Localization'
 
-
 i18n
   .use(Backend)
   .use(LanguageDetector)
@@ -13,7 +12,7 @@ i18n
     {
       fallbackLng: "pt-BR",
       backend: {
-        loadPath: `${AppLocalization.URL}{{lng}}/translation.json`,
+        loadPath: `${__dirname}/locales/{{lng}}/{{ns}}/translation.json`,
       },
       debug: false,
       interpolation: {

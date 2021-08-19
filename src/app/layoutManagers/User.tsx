@@ -3,6 +3,7 @@ import { ArrowBackIos, ArrowForwardIos } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core";
 import clsx from "clsx";
 import UserChip from "./components/UserChip";
+import history from "../router/history";
 
 interface layoutProps {
   className?: string;
@@ -19,7 +20,7 @@ export default function UserLayout({ children, className }: layoutProps) {
             <Grid item xs={3} md={6}>
               <Box display="flex">
                 <Box>
-                  <IconButton>
+                  <IconButton onClick={() => history.back()}>
                     <ArrowBackIos
                       className={classes.buttonText}
                       fontSize="small"

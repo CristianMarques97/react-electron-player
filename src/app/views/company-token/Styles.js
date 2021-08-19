@@ -5,7 +5,6 @@ export default makeStyles((theme) => ({
         padding: theme.spacing(6),
         paddingBottom: theme.spacing(8),
         paddingTop: theme.spacing(6),
-        height: '100vh',
         justifyContent: 'center',
         [theme.breakpoints.down('sm')]: {
             padding: theme.spacing(2),

@@ -36,9 +36,16 @@ function createWindow() {
   window = new BrowserWindow({
     width: 1280,
     height: 720,
-    minWidth: 900,
-    minHeight: 600,
-    show: false,
+    minWidth: 700,
+    minHeight: 700,
+    show: true,
+    frame: false,
+    darkTheme: true,
+    webPreferences: {
+      devTools: true,
+      nodeIntegration: true,
+      nodeIntegrationInWorker: true
+    }
   });
 
   window.on("close", function (event) {

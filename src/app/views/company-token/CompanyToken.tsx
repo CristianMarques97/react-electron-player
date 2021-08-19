@@ -6,7 +6,7 @@ import SubmitButton from "./components/SubmitButton";
 import TokenInput from "./components/TokenInput";
 import AppAssets from "../../constants/Assets";
 import useStyles from "./Styles";
-
+import logo from "../../../assets/2idLogo.png";
 export default function CompanyTokenView({ history }: any) {
   const { t } = useTranslation();
   const classes = useStyles();
@@ -30,10 +30,7 @@ export default function CompanyTokenView({ history }: any) {
         <Grid item xs={10} md={6} className={classes.center}>
           <Card className={classes.card}>
             <Box className={classes.logoBox}>
-              <img
-                className={classes.logo}
-                src={`${AppAssets.URL}2idLogo.png`}
-              />
+              <img className={classes.logo} src={logo} />
             </Box>
             <Typography className={classes.topSpacing} />
             <Box className={classes.boxTitle}>
@@ -114,15 +111,16 @@ export default function CompanyTokenView({ history }: any) {
             <Typography className={classes.topSpacing} />
             <Box className={classes.topSpacing}>
               <Grid container spacing={1}>
-                <Grid item md={3} />
-                <Grid item xs={12} md={6}>
+                ka
+                <Grid item xs={4} md={3} />
+                <Grid item xs={4} md={6}>
                   <SubmitButton
                     text={t("Acessar")}
                     color="primary"
                     onclick={submit}
                   />
                 </Grid>
-                <Grid item md={3} />
+                <Grid item xs={4} md={3} />
               </Grid>
             </Box>
             <Typography className={classes.topSpacing} />
