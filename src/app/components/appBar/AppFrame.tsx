@@ -6,24 +6,26 @@ import React from "react";
 
 export default function AppFrame() {
   const classes = useStyles();
-  let window: Electron.BrowserWindow | null = null;
 
   const minimizeWindow = () => {
-    const { remote } = require("electron");
-    console.log(remote?.BrowserWindow);
-
-    window = remote?.BrowserWindow?.getFocusedWindow();
-    window?.minimize();
+    // const { ipcRenderer } = require("electron");
+    // const e = require("electron");
+    // console.log(e);
+    debugger;
+    const w: any = window;
+    w.api.send("minimize");
+    // const window = BrowserWindow.getFocusedWindow();
+    // window?.minimize();
   };
 
   const maximizeWindow = () => {
-    const { remote } = require("electron");
-    window = remote?.BrowserWindow?.getFocusedWindow();
-    if (window?.isMaximized) {
-      window.unmaximize();
-    } else {
-      window?.maximize();
-    }
+    const w: any = window;
+    w.api.send("maximize");
+  };
+
+  const close = () => {
+    const w: any = window;
+    w.api.send("close");
   };
   return (
     <React.Fragment>
@@ -42,7 +44,7 @@ export default function AppFrame() {
               <Maximize />
             </Button>
           </Box>
-          <Box className={classes.frameMenuItems} onClick={minimizeWindow}>
+          <Box className={classes.frameMenuItems} onClick={close}>
             <Button
               className={classes.frameMenuItems}
               variant="text"

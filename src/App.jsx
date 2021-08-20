@@ -5,11 +5,10 @@ import {
   MuiThemeProvider,
   ThemeProvider,
 } from "@material-ui/core";
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import AppFrame from "./app/components/appBar/AppFrame";
-import history from "./app/router/history";
 import Routes from "./app/router/routes";
 import { persistor, store } from "./app/store";
 import darkTheme from "./app/theme/darkTheme";
@@ -20,6 +19,7 @@ function App() {
     const classes = useStyles();
     return (
       <MuiThemeProvider theme={darkTheme}>
+        <AppFrame />
         <CircularProgress className={classes.loading} />
       </MuiThemeProvider>
     );
@@ -30,8 +30,8 @@ function App() {
       <Provider store={store}>
         <PersistGate persistor={persistor}>
           <ThemeProvider theme={darkTheme}>
-            <CssBaseline />
             <AppFrame />
+            <CssBaseline />
             <Routes />
           </ThemeProvider>
         </PersistGate>

@@ -1,5 +1,12 @@
-const { app, BrowserWindow, Tray, Menu } = require("electron");
-
+const {
+  app,
+  BrowserWindow,
+  Tray,
+  Menu,
+  ipcMain,
+  contextBridge,
+  ipcRenderer,
+} = require("electron");
 const path = require("path");
 const url = require("url");
 
@@ -12,7 +19,6 @@ app.on("before-quit", function () {
 });
 
 function createWindow() {
-
   tray = new Tray(path.join(__dirname, "src/assets/tray.png"));
 
   tray.setContextMenu(
@@ -42,19 +48,21 @@ function createWindow() {
     frame: false,
     darkTheme: true,
     webPreferences: {
-      devTools: false,
-      nodeIntegration: true,
-      nodeIntegrationInWorker: true
-    }
+      devTools: true,
+      nodeIntegration: false,
+      contextIsolation: true,
+      enableRemoteModule: false,
+      preload: path.join(__dirname, "preload.js"),
+    },
   });
 
-  window.on("close", function (event) {
-    if (!isQuiting) {
-      event.preventDefault();
-      window.hide();
-      event.returnValue = false;
-    }
-  });
+  // window.on("close", function (event) {
+  //   if (!isQuiting) {
+  //     event.preventDefault();
+  //     window.hide();
+  //     event.returnValue = false;
+  //   }
+  // });
 
   window.loadURL(
     process.env.ELECTRON_START_URL ||
@@ -64,6 +72,22 @@ function createWindow() {
         slashes: true,
       })
   );
+
+  ipcMain.on("minimize", () => {
+    window.minimize();
+  });
+
+  ipcMain.on("close", () => {
+    window.hide();
+  });
+
+  ipcMain.on("maximize", () => {
+    if (window?.isMaximized()) {
+      window.unmaximize();
+    } else {
+      window?.maximize();
+    }
+  });
 }
 
 app.on("before-quit", () => {

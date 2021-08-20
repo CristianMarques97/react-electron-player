@@ -5,10 +5,10 @@ export default makeStyles((theme) => ({
     width: "100%",
     display: "flex",
     backgroundColor: theme.palette.background.paper,
+    "-webkit-app-region": "drag",
   },
   appBar: {
-    "-webkit-app-region": "drag",
-    width: "75%",
+    width: "50%",
     display: "flex",
     padding: 2,
   },
@@ -19,9 +19,10 @@ export default makeStyles((theme) => ({
   frameMenuBox: {
     display: "flex",
     justifyContent: "flex-end",
-    width: "25%",
+    width: "50%",
   },
   frameMenuItems: {
     borderRadius: 0,
+    "-webkit-app-region": "no-drag",
   },
 }));
