@@ -3,24 +3,22 @@ import { Close, Maximize, Minimize } from "@material-ui/icons";
 import useStyles from "./styles";
 import logo from "../../../assets/2idIcon.jpg";
 import React from "react";
+import MaximizeIcon from "../../utils/icons/Maximize";
+import MinimizeIcon from "../../utils/icons/Minimize";
 
 export default function AppFrame() {
   const classes = useStyles();
+  const [maximizedWindow, setMaximizedWindow] = React.useState(true);
 
   const minimizeWindow = () => {
-    // const { ipcRenderer } = require("electron");
-    // const e = require("electron");
-    // console.log(e);
-    debugger;
     const w: any = window;
     w.api.send("minimize");
-    // const window = BrowserWindow.getFocusedWindow();
-    // window?.minimize();
   };
 
   const maximizeWindow = () => {
     const w: any = window;
     w.api.send("maximize");
+    setMaximizedWindow(!maximizedWindow);
   };
 
   const close = () => {
@@ -41,7 +39,11 @@ export default function AppFrame() {
           </Box>
           <Box className={classes.frameMenuItems} onClick={maximizeWindow}>
             <Button className={classes.frameMenuItems} variant="text">
-              <Maximize />
+              {maximizedWindow ? (
+                <MaximizeIcon color="action" />
+              ) : (
+                <MinimizeIcon color="action" />
+              )}
             </Button>
           </Box>
           <Box className={classes.frameMenuItems} onClick={close}>

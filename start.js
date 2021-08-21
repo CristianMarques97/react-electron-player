@@ -4,12 +4,12 @@ const {
   Tray,
   Menu,
   ipcMain,
-  contextBridge,
-  ipcRenderer,
+  nativeTheme,
 } = require("electron");
 const path = require("path");
 const url = require("url");
-
+const fs = require("fs");
+const electronLocalshortcut = require("electron-localshortcut");
 let window;
 let isQuiting;
 let tray;
@@ -46,7 +46,7 @@ function createWindow() {
     minHeight: 700,
     show: true,
     frame: false,
-    darkTheme: true,
+    darkTheme: nativeTheme.shouldUseDarkColors,
     webPreferences: {
       devTools: true,
       nodeIntegration: false,
@@ -56,14 +56,6 @@ function createWindow() {
     },
   });
 
-  // window.on("close", function (event) {
-  //   if (!isQuiting) {
-  //     event.preventDefault();
-  //     window.hide();
-  //     event.returnValue = false;
-  //   }
-  // });
-
   window.loadURL(
     process.env.ELECTRON_START_URL ||
       url.format({
@@ -71,6 +63,12 @@ function createWindow() {
         protocol: "file:",
         slashes: true,
       })
+  );
+
+  electronLocalshortcut.register(
+    window,
+    ["CommandOrControl+R", "CommandOrControl+Shift+R", "F5"],
+    () => {}
   );
 
   ipcMain.on("minimize", () => {
@@ -87,6 +85,25 @@ function createWindow() {
     } else {
       window?.maximize();
     }
+  });
+
+  ipcMain.on("save-file", (event, { filePath, fileName, data }) => {
+    console.log("path", path.join(app.getPath("appData"), "2id", filePath));
+    if (!fs.existsSync(path.join(app.getPath("appData"), "2id", filePath))) {
+      fs.mkdirSync(path.join(app.getPath("appData"), "2id", filePath), {
+        recursive: true,
+      });
+    }
+
+    fs.writeFile(
+      path.join(app.getPath("appData"), "2id", filePath, fileName),
+      data,
+      (err) => {
+        if (err) {
+          console.log(err);
+        }
+      }
+    );
   });
 }
 
