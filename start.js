@@ -9,7 +9,6 @@ const {
 const path = require("path");
 const url = require("url");
 const fs = require("fs");
-const electronLocalshortcut = require("electron-localshortcut");
 let window;
 let isQuiting;
 let tray;
@@ -63,12 +62,6 @@ function createWindow() {
         protocol: "file:",
         slashes: true,
       })
-  );
-
-  electronLocalshortcut.register(
-    window,
-    ["CommandOrControl+R", "CommandOrControl+Shift+R", "F5"],
-    () => {}
   );
 
   ipcMain.on("minimize", () => {
