@@ -9,9 +9,10 @@ import { Suspense } from "react";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import AppFrame from "./app/components/appBar/AppFrame";
-import Routes from "./app/router/routes";
+import Routes from "./app/router/index";
 import { persistor, store } from "./app/store";
 import darkTheme from "./app/theme/darkTheme";
+import "./fonts/fonts.css";
 import "./i18n";
 
 function App() {

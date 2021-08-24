@@ -1,4 +1,6 @@
 export enum ApplicationRoutes {
-  Playlist = "routes/playlist",
-  Scheduling = "routes/music-scheduling",
+  LOGIN = "/login",
+  SCHEDULING = "/scheduling",
+  PLAYLIST = "/playlist-menu",
+  PLAYLIST_ITEM = "/playlist/:id",
 }

@@ -1,5 +1,6 @@
 import { Box, Fab, Typography } from "@material-ui/core";
 import { PlayArrow } from "@material-ui/icons";
+import clsx from "clsx";
 import useStyles from "./Styles";
 
 export default function SchedulingView() {
@@ -8,13 +9,18 @@ export default function SchedulingView() {
   return (
     <Box className={classes.root}>
       <Box>
-        <Typography>{text}</Typography>
+        <Typography
+          color="textSecondary"
+          className={clsx(classes.text, classes.grey)}
+        >
+          {text}
+        </Typography>
       </Box>
       <Box className={classes.playBox}>
         <Fab color="primary">
           <PlayArrow />
         </Fab>
-        <Typography className={classes.playText}>
+        <Typography className={clsx(classes.playText, classes.text)}>
           Sexta-feira, 25 de Junho de 2021
         </Typography>
       </Box>

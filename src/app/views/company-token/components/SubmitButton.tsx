@@ -28,5 +28,6 @@ const useStyles = makeStyles((theme) => ({
   button: {
     padding: 12,
     borderRadius: 40,
+    fontFamily: "sansProRegular",
   },
 }));

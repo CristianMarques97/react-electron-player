@@ -1,22 +1,17 @@
 import { Box, Divider } from "@material-ui/core";
-import React from "react";
 import { useTranslation } from "react-i18next";
-import { ApplicationRoutes } from "../../constants/enums/AplicationRoutes";
-import history from "../../router/history";
-import PlaylistView from "../Playlists/Playlist";
-import SchedulingView from "../Scheduling/Scheduling";
+import { useHistory } from "react-router-dom";
+import { ApplicationRoutes } from "../../../constants/enums/AplicationRoutes";
 import MenuButton from "./components/MenuButton/MenuButton";
 import useStyles from "./Styles";
 
-export default function MainPage() {
+export default function MainPageMenu() {
   const { t } = useTranslation();
   const classes = useStyles();
-  const [route, setRoute] = React.useState<string>(
-    ApplicationRoutes.Scheduling
-  );
+  const history = useHistory();
 
   const setPage = (router: string) => {
-    setRoute(router);
+    history.push(router);
   };
 
   return (
@@ -25,8 +20,10 @@ export default function MainPage() {
         <Box className={classes.menu}>
           <Box className={classes.menuItem}>
             <MenuButton
-              onItemClick={() => setPage(ApplicationRoutes.Scheduling)}
-              activated={route === ApplicationRoutes.Scheduling}
+              onItemClick={() => setPage(ApplicationRoutes.SCHEDULING)}
+              activated={
+                history.location.pathname === ApplicationRoutes.SCHEDULING
+              }
             >
               {t("Agendamento")}
             </MenuButton>
@@ -36,18 +33,15 @@ export default function MainPage() {
           </Box>
           <Box className={classes.menuItem}>
             <MenuButton
-              onItemClick={() => setPage(ApplicationRoutes.Playlist)}
-              activated={route === ApplicationRoutes.Playlist}
+              onItemClick={() => setPage(ApplicationRoutes.PLAYLIST)}
+              activated={
+                history.location.pathname === ApplicationRoutes.PLAYLIST
+              }
             >
               {t("Playlist")}
             </MenuButton>
           </Box>
         </Box>
-        {route === ApplicationRoutes.Scheduling ? (
-          <SchedulingView />
-        ) : (
-          <PlaylistView />
-        )}
       </Box>
     </Box>
   );

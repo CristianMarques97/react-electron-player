@@ -1,5 +1,5 @@
 import { Box, Grid, Typography } from "@material-ui/core";
-import { Alarm } from "@material-ui/icons";
+import clsx from "clsx";
 import React from "react";
 import PlaylistService from "../../services/api/PlaylistService";
 import PlaylistOverlay from "./components/overlay/Overlay";
@@ -18,17 +18,17 @@ export default function PlaylistView() {
     getPlaylist();
   }, []);
 
-  console.log(playlist);
-
   return (
     <Box className={classes.root}>
       <Box>
-        <Typography>{text}</Typography>
+        <Typography className={clsx(classes.text, classes.grey)}>
+          {text}
+        </Typography>
       </Box>
       <Box className={classes.playlistContainer}>
         <Grid container spacing={4}>
           {playlist?.map(({ image, inProgress }, i) => (
-            <Grid item xs={6} md={3} key={image + i}>
+            <Grid item xs={6} sm={4} md={3} lg={2} key={image + i}>
               <Box
                 textAlign="center"
                 position="relative"

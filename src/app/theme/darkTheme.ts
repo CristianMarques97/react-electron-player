@@ -11,11 +11,14 @@ const darkTheme = createTheme({
     secondary: {
       main: "#272727",
       light: "#525252",
-      dark: "1b1b1b",
+      dark: "#1b1b1b",
     },
     text: {
       primary: "#ffffff",
       secondary: "#323232",
+    },
+    grey: {
+      A100: "#ababab",
     },
     background: {
       default: "#181818",

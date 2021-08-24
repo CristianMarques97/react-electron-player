@@ -2,8 +2,9 @@ import { Box, Grid, IconButton } from "@material-ui/core";
 import { ArrowBackIos, ArrowForwardIos } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core";
 import clsx from "clsx";
-import UserChip from "./components/UserChip";
-import history from "../router/history";
+import UserChip from "./components/userChip/UserChip";
+import MainPageMenu from "./components/mainPageMenu/MainPageMenu";
+import { useHistory } from "react-router-dom";
 
 interface layoutProps {
   className?: string;
@@ -12,6 +13,8 @@ interface layoutProps {
 
 export default function UserLayout({ children, className }: layoutProps) {
   const classes = useStyles();
+  const history: any = useHistory();
+
   return (
     <Box className={clsx(className, classes.root)}>
       <header>
@@ -20,7 +23,7 @@ export default function UserLayout({ children, className }: layoutProps) {
             <Grid item xs={3} md={6}>
               <Box display="flex">
                 <Box>
-                  <IconButton onClick={() => history.back()}>
+                  <IconButton onClick={() => history.goBack()}>
                     <ArrowBackIos
                       className={classes.buttonText}
                       fontSize="small"
@@ -29,7 +32,7 @@ export default function UserLayout({ children, className }: layoutProps) {
                   </IconButton>
                 </Box>
                 <Box>
-                  <IconButton>
+                  <IconButton onClick={() => history.goForward()}>
                     <ArrowForwardIos
                       className={classes.buttonText}
                       fontSize="small"
@@ -45,6 +48,9 @@ export default function UserLayout({ children, className }: layoutProps) {
           </Grid>
         </Box>
       </header>
+      <Box>
+        <MainPageMenu />
+      </Box>
       <main>{children}</main>
     </Box>
   );

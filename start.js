@@ -81,7 +81,6 @@ function createWindow() {
   });
 
   ipcMain.on("save-file", (event, { filePath, fileName, data }) => {
-    console.log("path", path.join(app.getPath("appData"), "2id", filePath));
     if (!fs.existsSync(path.join(app.getPath("appData"), "2id", filePath))) {
       fs.mkdirSync(path.join(app.getPath("appData"), "2id", filePath), {
         recursive: true,

@@ -20,7 +20,7 @@ export default function CompanyTokenView({ history }: any) {
 
   const submit = () => {
     console.log(token);
-    history.push("/main-page");
+    history.push("/scheduling");
   };
 
   return (

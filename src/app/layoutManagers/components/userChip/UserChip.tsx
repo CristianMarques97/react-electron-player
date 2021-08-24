@@ -18,6 +18,7 @@ export default function UserChip() {
             color="secondary"
             size="small"
             className={classes.button}
+            
           >
             {t("Sair")}
           </Button>
@@ -42,12 +43,17 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.dark,
     minWidth: 120,
     borderRadius: 60,
+    fontFamily: "sansProRegular",
+    color: theme.palette.grey.A100,
   },
   buttonBox: {
     display: "flex",
     justifyContent: "flex-end",
+   
   },
   text: {
     padding: theme.spacing(1),
+    fontFamily: "sansProRegular",
+    color: theme.palette.grey.A100,
   },
 }));

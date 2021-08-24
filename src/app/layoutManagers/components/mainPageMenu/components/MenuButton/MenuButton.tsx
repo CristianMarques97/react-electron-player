@@ -33,9 +33,10 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     fontWeight: "bold",
-    fontSize: theme.typography.h3.fontSize,
+    fontFamily: "sansProRegular",
+    fontSize: theme.typography.h2.fontSize,
     [theme.breakpoints.down("sm")]: {
-      fontSize: theme.typography.h4.fontSize,
+      fontSize: theme.typography.h3.fontSize,
     },
   },
 }));
