@@ -3,7 +3,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import { ApplicationRoutes } from "../constants/enums/AplicationRoutes";
 import BlankLayout from "../layoutManagers/Blank";
 import UserLayout from "../layoutManagers/User";
-import CompanyTokenView from "../views/company-token/CompanyToken";
+import LoginView from "../views/Login/LoginView";
 import PlaylistDetailsView from "../views/PlaylistDetails/PlaylistDetails";
 import PlaylistView from "../views/Playlists/Playlist";
 import SchedulingView from "../views/Scheduling/Scheduling";
@@ -17,7 +17,7 @@ export default function AppRoutes() {
           <Redirect to={ApplicationRoutes.LOGIN} />
         </Route>
         <Page
-          Component={CompanyTokenView}
+          Component={LoginView}
           LayoutManager={BlankLayout}
           path={ApplicationRoutes.LOGIN}
         />

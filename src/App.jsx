@@ -11,7 +11,9 @@ import { PersistGate } from "redux-persist/integration/react";
 import AppFrame from "./app/components/appBar/AppFrame";
 import Routes from "./app/router/index";
 import { persistor, store } from "./app/store";
+import { ToastContainer } from "react-toastify";
 import darkTheme from "./app/theme/darkTheme";
+import "react-toastify/dist/ReactToastify.css";
 import "./fonts/fonts.css";
 import "./i18n";
 
@@ -33,6 +35,7 @@ function App() {
           <ThemeProvider theme={darkTheme}>
             <AppFrame />
             <CssBaseline />
+            <ToastContainer position="bottom-right" />
             <Routes />
           </ThemeProvider>
         </PersistGate>

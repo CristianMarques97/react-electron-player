@@ -1,15 +1,19 @@
 import { Box, Button, Grid, makeStyles, Typography } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import Store from "../../../model/Store";
 
 export default function UserChip() {
   const classes = useStyles();
   const { t } = useTranslation();
+  const store: Store = useSelector((state: any) => state?.stores);
+
   return (
     <Box className={classes.root}>
       <Grid container>
         <Grid item xs={8} className={classes.user}>
           <Box className={classes.text}>
-            <Typography>Sestini - Shopping Ibirapuera</Typography>
+            <Typography>{store.social_name}</Typography>
           </Box>
         </Grid>
         <Grid item xs={4} className={classes.buttonBox}>
@@ -18,7 +22,6 @@ export default function UserChip() {
             color="secondary"
             size="small"
             className={classes.button}
-            
           >
             {t("Sair")}
           </Button>
@@ -49,7 +52,6 @@ const useStyles = makeStyles((theme) => ({
   buttonBox: {
     display: "flex",
     justifyContent: "flex-end",
-   
   },
   text: {
     padding: theme.spacing(1),

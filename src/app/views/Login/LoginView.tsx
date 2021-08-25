@@ -7,20 +7,57 @@ import TokenInput from "./components/TokenInput";
 import AppAssets from "../../constants/Assets";
 import useStyles from "./Styles";
 import logo from "../../../assets/2idLogo.png";
-export default function CompanyTokenView({ history }: any) {
+import { toast } from "react-toastify";
+import StoreService from "../../services/api/stores/StoreService";
+import { useDispatch } from "react-redux";
+import { setStore } from "../../store/store-modules/stores/StoresAction";
+export default function LoginView({ history }: any) {
   const { t } = useTranslation();
   const classes = useStyles();
-  const [token, setToken] = React.useState<string[]>(new Array(6));
+  const dispatch = useDispatch();
+  const [token, setToken] = React.useState<string[]>(Array(8).fill(""));
+
+  const submit = async () => {
+    try {
+      const formatedToken = `${token.slice(0, 4)}-${token.slice(
+        4,
+        8
+      )}`.replaceAll(",", "");
+
+      const { data: store } = await StoreService.getStoreByToken(formatedToken);
+      if (store?.id) {
+        dispatch(setStore(store));
+        history.push("/scheduling");
+      } else {
+        toast.error(t("Loja não encontrada"));
+      }
+    } catch (e) {
+      console.log(e);
+      toast.error(t("Erro ao buscar a loja"));
+    }
+  };
 
   const setTokenValue = (value: string, index: number) => {
     const tokenArray = token;
     tokenArray[index] = value;
-    setToken(tokenArray);
+    setToken(Array.from(tokenArray));
+    changeInputFocus(value, index);
   };
 
-  const submit = () => {
-    console.log(token);
-    history.push("/scheduling");
+  const changeInputFocus = (value: string, current: number) => {
+    if (current < 8)
+      document
+        .getElementById(
+          `ref-${value?.length ? (current += 1) : (current -= 1)}`
+        )
+        ?.focus();
+  };
+
+  const onPaste = (e: React.ClipboardEvent) => {
+    const text = e.clipboardData?.getData("text");
+    if (text?.length > 7) {
+      setToken(Array.from(text.replaceAll("-", "")));
+    }
   };
 
   return (
@@ -45,26 +82,38 @@ export default function CompanyTokenView({ history }: any) {
                 <Grid item xs={5}>
                   <Box>
                     <Grid container spacing={1}>
-                      <Grid item xs={4}>
+                      <Grid item xs={3}>
                         <TokenInput
                           autoFocus
+                          id="ref-0"
                           tabIndex={0}
                           value={token[0]}
                           onChange={(value) => setTokenValue(value, 0)}
+                          onPaste={onPaste}
                         />
                       </Grid>
-                      <Grid item xs={4}>
+                      <Grid item xs={3}>
                         <TokenInput
+                          id="ref-1"
                           tabIndex={1}
                           value={token[1]}
                           onChange={(value) => setTokenValue(value, 1)}
                         />
                       </Grid>
-                      <Grid item xs={4}>
+                      <Grid item xs={3}>
                         <TokenInput
+                          id="ref-2"
                           tabIndex={2}
                           value={token[2]}
                           onChange={(value) => setTokenValue(value, 2)}
+                        />
+                      </Grid>
+                      <Grid item xs={3}>
+                        <TokenInput
+                          id="ref-3"
+                          tabIndex={3}
+                          value={token[3]}
+                          onChange={(value) => setTokenValue(value, 3)}
                         />
                       </Grid>
                     </Grid>
@@ -82,25 +131,36 @@ export default function CompanyTokenView({ history }: any) {
                 <Grid item xs={5}>
                   <Box>
                     <Grid container spacing={1}>
-                      <Grid item xs={4}>
+                      <Grid item xs={3}>
                         <TokenInput
-                          tabIndex={3}
-                          value={token[3]}
-                          onChange={(value) => setTokenValue(value, 3)}
-                        />
-                      </Grid>
-                      <Grid item xs={4}>
-                        <TokenInput
+                          id="ref-4"
                           tabIndex={4}
                           value={token[4]}
                           onChange={(value) => setTokenValue(value, 4)}
                         />
                       </Grid>
-                      <Grid item xs={4}>
+                      <Grid item xs={3}>
                         <TokenInput
+                          id="ref-5"
                           tabIndex={5}
                           value={token[5]}
                           onChange={(value) => setTokenValue(value, 5)}
+                        />
+                      </Grid>
+                      <Grid item xs={3}>
+                        <TokenInput
+                          id="ref-6"
+                          tabIndex={6}
+                          value={token[6]}
+                          onChange={(value) => setTokenValue(value, 6)}
+                        />
+                      </Grid>
+                      <Grid item xs={3}>
+                        <TokenInput
+                          id="ref-7"
+                          tabIndex={7}
+                          value={token[7]}
+                          onChange={(value) => setTokenValue(value, 7)}
                         />
                       </Grid>
                     </Grid>

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import AuthReducer from './auth/AuthReducer';
+import StoresReducer from './stores/StoresReducer';
 
 export default combineReducers({
-    auth: AuthReducer
+    stores: StoresReducer
 });
 
 export interface ActionProps {
