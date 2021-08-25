@@ -1,6 +1,6 @@
 import Store from "../../../model/Store";
 import { ActionProps } from "../rootReducer";
-import { SET_STORE } from "./StoresAction";
+import { LOG_OUT, SET_STORE } from "./StoresAction";
 /**
  * Reducer de configuração das lojas
  */
@@ -21,6 +21,10 @@ export default function StoresReducer(state = initialState, { type, payload }: A
   switch (type) {
     case SET_STORE:
       return payload
+      case LOG_OUT:
+        return {
+          ...initialState
+        }
     default:
       return state;
   }

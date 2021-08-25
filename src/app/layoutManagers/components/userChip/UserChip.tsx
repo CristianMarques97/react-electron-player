@@ -1,12 +1,21 @@
 import { Box, Button, Grid, makeStyles, Typography } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { ApplicationRoutes } from "../../../constants/enums/AplicationRoutes";
 import Store from "../../../model/Store";
+import { logout } from "../../../store/store-modules/stores/StoresAction";
 
 export default function UserChip() {
   const classes = useStyles();
   const { t } = useTranslation();
+  const history = useHistory();
   const store: Store = useSelector((state: any) => state?.stores);
+  const dispatch = useDispatch();
+  const userLogout = () => {
+    dispatch(logout());
+    history.push(ApplicationRoutes.LOGIN);
+  };
 
   return (
     <Box className={classes.root}>
@@ -21,6 +30,7 @@ export default function UserChip() {
             variant="contained"
             color="secondary"
             size="small"
+            onClick={userLogout}
             className={classes.button}
           >
             {t("Sair")}

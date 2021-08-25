@@ -1,4 +1,6 @@
-import { Route } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Redirect, Route } from "react-router-dom";
+import { ApplicationRoutes } from "../../constants/enums/AplicationRoutes";
 
 interface PageProps {
   exact?: boolean;
@@ -14,6 +16,14 @@ export default function Page({
   needAuthentication,
   path,
 }: PageProps) {
+  const login: number = useSelector((state: any) => state.stores?.id);
+
+  if (needAuthentication && !login) {
+    return <Redirect to={ApplicationRoutes.LOGIN} />;
+  } else if (!needAuthentication && login && path === ApplicationRoutes.LOGIN) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <Route
       {...exact}

@@ -1,8 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { ApplicationRoutes } from "../constants/enums/AplicationRoutes";
 import BlankLayout from "../layoutManagers/Blank";
 import UserLayout from "../layoutManagers/User";
+import Store from "../model/Store";
 import LoginView from "../views/Login/LoginView";
 import PlaylistDetailsView from "../views/PlaylistDetails/PlaylistDetails";
 import PlaylistView from "../views/Playlists/Playlist";
@@ -10,11 +12,17 @@ import SchedulingView from "../views/Scheduling/Scheduling";
 import Page from "./components/Page";
 
 export default function AppRoutes() {
+  const login: number = useSelector((state: any) => state.stores?.id);
+
   return (
     <React.Fragment>
       <Switch>
         <Route exact path="/">
-          <Redirect to={ApplicationRoutes.LOGIN} />
+          {!login ? (
+            <Redirect to={ApplicationRoutes.LOGIN} />
+          ) : (
+            <Redirect to={ApplicationRoutes.SCHEDULING} />
+          )}
         </Route>
         <Page
           Component={LoginView}
@@ -22,16 +30,19 @@ export default function AppRoutes() {
           path={ApplicationRoutes.LOGIN}
         />
         <Page
+          needAuthentication
           Component={SchedulingView}
           LayoutManager={UserLayout}
           path={ApplicationRoutes.SCHEDULING}
         />
         <Page
+          needAuthentication
           Component={PlaylistView}
           LayoutManager={UserLayout}
           path={ApplicationRoutes.PLAYLIST}
         />
         <Page
+          needAuthentication
           Component={PlaylistDetailsView}
           LayoutManager={UserLayout}
           path={ApplicationRoutes.PLAYLIST_ITEM}
@@ -42,7 +53,6 @@ export default function AppRoutes() {
           LayoutManager={BlankLayout}
           path="/not-found"
         /> */}
-        {/* <Redirect to="/not-found" /> */}
       </Switch>
     </React.Fragment>
   );
