@@ -1,19 +1,31 @@
-import { Box, Grid, IconButton } from "@material-ui/core";
-import { ArrowBackIos, ArrowForwardIos } from "@material-ui/icons";
-import { makeStyles } from "@material-ui/core";
-import clsx from "clsx";
-import UserChip from "./components/userChip/UserChip";
-import MainPageMenu from "./components/mainPageMenu/MainPageMenu";
-import { useHistory } from "react-router-dom";
+import { Box, Grid, IconButton, makeStyles } from '@material-ui/core'
+import { ArrowBackIos, ArrowForwardIos } from '@material-ui/icons'
+import { useHistory } from 'react-router-dom'
+import clsx from 'clsx'
+import UserChip from './components/userChip/UserChip'
+import MainPageMenu from './components/mainPageMenu/MainPageMenu'
 
 interface layoutProps {
-  className?: string;
-  children: JSX.Element[];
+  className?: string
+  children: JSX.Element[]
 }
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: theme.spacing(4),
+  },
+  buttonText: {
+    color: theme.palette.text.primary,
+  },
+  user: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+}))
+
 export default function UserLayout({ children, className }: layoutProps) {
-  const classes = useStyles();
-  const history: any = useHistory();
+  const classes = useStyles()
+  const history: any = useHistory()
 
   return (
     <Box className={clsx(className, classes.root)}>
@@ -53,18 +65,9 @@ export default function UserLayout({ children, className }: layoutProps) {
       </Box>
       <main>{children}</main>
     </Box>
-  );
+  )
 }
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: theme.spacing(4),
-  },
-  buttonText: {
-    color: theme.palette.text.primary,
-  },
-  user: {
-    display: "flex",
-    justifyContent: "flex-end",
-  },
-}));
+UserLayout.defaultProps = {
+  className: null,
+}

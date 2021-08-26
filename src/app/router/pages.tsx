@@ -1,21 +1,20 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { Redirect, Route, Switch } from "react-router-dom";
-import { ApplicationRoutes } from "../constants/enums/AplicationRoutes";
-import BlankLayout from "../layoutManagers/Blank";
-import UserLayout from "../layoutManagers/User";
-import Store from "../model/Store";
-import LoginView from "../views/Login/LoginView";
-import PlaylistDetailsView from "../views/PlaylistDetails/PlaylistDetails";
-import PlaylistView from "../views/Playlists/Playlist";
-import SchedulingView from "../views/Scheduling/Scheduling";
-import Page from "./components/Page";
+import { Fragment } from 'react'
+import { useSelector } from 'react-redux'
+import { Redirect, Route, Switch } from 'react-router-dom'
+import ApplicationRoutes from '../constants/enums/AplicationRoutes'
+import BlankLayout from '../layoutManagers/Blank'
+import UserLayout from '../layoutManagers/User'
+import LoginView from '../views/Login/LoginView'
+import PlaylistDetailsView from '../views/PlaylistDetails/PlaylistDetails'
+import PlaylistView from '../views/Playlists/Playlist'
+import SchedulingView from '../views/Scheduling/Scheduling'
+import Page from './components/Page'
 
 export default function AppRoutes() {
-  const login: number = useSelector((state: any) => state.stores?.id);
+  const login: number = useSelector((state: any) => state.stores?.id)
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Switch>
         <Route exact path="/">
           {!login ? (
@@ -54,6 +53,6 @@ export default function AppRoutes() {
           path="/not-found"
         /> */}
       </Switch>
-    </React.Fragment>
-  );
+    </Fragment>
+  )
 }

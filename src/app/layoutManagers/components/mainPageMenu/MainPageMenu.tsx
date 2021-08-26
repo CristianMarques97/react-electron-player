@@ -1,18 +1,18 @@
-import { Box, Divider } from "@material-ui/core";
-import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router-dom";
-import { ApplicationRoutes } from "../../../constants/enums/AplicationRoutes";
-import MenuButton from "./components/MenuButton/MenuButton";
-import useStyles from "./Styles";
+import { Box, Divider } from '@material-ui/core'
+import { useTranslation } from 'react-i18next'
+import { useHistory } from 'react-router-dom'
+import ApplicationRoutes from '../../../constants/enums/AplicationRoutes'
+import MenuButton from './components/MenuButton/MenuButton'
+import useStyles from './Styles'
 
 export default function MainPageMenu() {
-  const { t } = useTranslation();
-  const classes = useStyles();
-  const history = useHistory();
+  const { t } = useTranslation()
+  const classes = useStyles()
+  const history = useHistory()
 
   const setPage = (router: string) => {
-    history.push(router);
-  };
+    history.push(router)
+  }
 
   return (
     <Box className={classes.root}>
@@ -25,7 +25,7 @@ export default function MainPageMenu() {
                 history.location.pathname === ApplicationRoutes.SCHEDULING
               }
             >
-              {t("Agendamento")}
+              {t('Agendamento')}
             </MenuButton>
           </Box>
           <Box className={classes.menuItem}>
@@ -38,11 +38,11 @@ export default function MainPageMenu() {
                 history.location.pathname === ApplicationRoutes.PLAYLIST
               }
             >
-              {t("Playlist")}
+              {t('Playlist')}
             </MenuButton>
           </Box>
         </Box>
       </Box>
     </Box>
-  );
+  )
 }

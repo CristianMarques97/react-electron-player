@@ -1,13 +1,13 @@
-import React from "react";
-import { HashRouter, MemoryRouter } from "react-router-dom";
-import AppRoutes from "./pages";
+import { Fragment } from 'react'
+import { HashRouter } from 'react-router-dom'
+import AppRoutes from './pages'
 
 export default function Routes() {
   return (
-    <React.Fragment>
+    <Fragment>
       <HashRouter>
         <AppRoutes />
       </HashRouter>
-    </React.Fragment>
-  );
+    </Fragment>
+  )
 }

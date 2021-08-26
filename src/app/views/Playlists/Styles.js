@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core'
 
 export default makeStyles((theme) => ({
   root: {
@@ -8,25 +8,25 @@ export default makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
   playlistLogo: {
-    width: "100%",
+    width: '100%',
   },
   text: {
-    fontFamily: "sansProRegular",
+    fontFamily: 'sansProRegular',
   },
   grey: {
     color: theme.palette.grey.A100,
   },
   inProgress: {
-    position: "relative",
+    position: 'relative',
     top: 0,
     left: 0,
-    width: "100% !important",
-    height: "100% !important",
+    width: '100% !important',
+    height: '100% !important',
     zIndex: 10,
-    backgroundColor: "black",
+    backgroundColor: 'black',
     opacity: 0.5,
   },
   inProgressItens: {
     fontSize: 20,
   },
-}));
+}))

@@ -1,18 +1,18 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core'
 
 export default makeStyles((theme) => ({
   root: {
     padding: theme.spacing(6),
     paddingBottom: theme.spacing(8),
     paddingTop: theme.spacing(6),
-    justifyContent: "center",
-    [theme.breakpoints.down("sm")]: {
+    justifyContent: 'center',
+    [theme.breakpoints.down('sm')]: {
       padding: theme.spacing(2),
     },
   },
   center: {
-    display: "flex",
-    justifyContent: "center",
+    display: 'flex',
+    justifyContent: 'center',
   },
   card: {
     borderRadius: 0,
@@ -24,29 +24,29 @@ export default makeStyles((theme) => ({
   },
   logoBox: {
     padding: theme.spacing(2),
-    display: "flex",
-    justifyContent: "center",
+    display: 'flex',
+    justifyContent: 'center',
   },
   logo: {
-    maxWidth: "100%",
-    maxHeight: "100%",
-    display: "block",
+    maxWidth: '100%',
+    maxHeight: '100%',
+    display: 'block',
   },
   boxTitle: {},
   title: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: theme.typography.h6.fontSize,
-    fontFamily: "sansProRegular",
+    fontFamily: 'sansProRegular',
   },
   separator: {
-    alignSelf: "center",
-    textAlign: "center",
+    alignSelf: 'center',
+    textAlign: 'center',
   },
   boxHelper: {
     padding: theme.spacing(2),
   },
   helper: {
-    textAlign: "center",
-    fontFamily: "sansProRegular",
+    textAlign: 'center',
+    fontFamily: 'sansProRegular',
   },
-}));
+}))

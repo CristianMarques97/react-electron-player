@@ -1,14 +1,15 @@
-import { TextField } from "@material-ui/core";
-import React from "react";
+import { TextField } from '@material-ui/core'
+import React from 'react'
 
 interface TokenInputProps {
-  id?: string;
-  value: string;
-  onChange: (value: string) => void;
-  onPaste?: (event: React.ClipboardEvent) => void;
-  tabIndex?: number;
-  autoFocus?: boolean;
+  id?: string
+  value: string
+  onChange: (value: string) => void
+  onPaste?: (event: React.ClipboardEvent) => void
+  tabIndex?: number
+  autoFocus?: boolean
 }
+
 export default function TokenInput({
   id,
   value,
@@ -20,8 +21,8 @@ export default function TokenInput({
   const onTextChange = (
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => {
-    onChange(event.target.value);
-  };
+    onChange(event.target.value)
+  }
 
   return (
     <TextField
@@ -32,7 +33,14 @@ export default function TokenInput({
       value={value}
       onChange={onTextChange}
       onPasteCapture={onPaste}
-      inputProps={{ maxLength: 1, style: { textAlign: "center" } }}
+      inputProps={{ maxLength: 1, style: { textAlign: 'center' } }}
     />
-  );
+  )
+}
+
+TokenInput.defaultProps = {
+  id: '',
+  onPaste: null,
+  tabIndex: null,
+  autoFocus: null,
 }

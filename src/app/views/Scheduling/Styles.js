@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core'
 
 export default makeStyles((theme) => ({
   root: {
@@ -7,16 +7,16 @@ export default makeStyles((theme) => ({
   playBox: {
     padding: theme.spacing(2),
     paddingTop: theme.spacing(4),
-    display: "flex",
+    display: 'flex',
   },
   text: {
-    fontFamily: "sansProRegular",
+    fontFamily: 'sansProRegular',
   },
   grey: {
     color: theme.palette.grey.A100,
   },
   playText: {
     paddingLeft: theme.spacing(2),
-    alignSelf: "center",
+    alignSelf: 'center',
   },
-}));
+}))

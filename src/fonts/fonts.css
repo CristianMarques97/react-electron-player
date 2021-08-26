@@ -1,14 +1,14 @@
 @font-face {
-  font-family: "sansProBlack";
-  src: url("./SourceSansPro-Black.otf");
+  font-family: 'sansProBlack';
+  src: url('./SourceSansPro-Black.otf');
 }
 
 @font-face {
-  font-family: "sansProIt";
-  src: url("./SourceSansPro-It.otf");
+  font-family: 'sansProIt';
+  src: url('./SourceSansPro-It.otf');
 }
 
 @font-face {
-  font-family: "sansProRegular";
-  src: url("./SourceSansPro-Regular.otf");
+  font-family: 'sansProRegular';
+  src: url('./SourceSansPro-Regular.otf');
 }

@@ -1,15 +1,15 @@
-import storage from "redux-persist/lib/storage";
-import { persistReducer } from "redux-persist";
+import storage from 'redux-persist/lib/storage'
+import { persistReducer } from 'redux-persist'
 
 export default (reducers) => {
   const persistedReducer = persistReducer(
     {
-      key: "2id-data",
+      key: '2id-data',
       storage,
-      whitelist: ["stores"],
+      whitelist: ['stores'],
     },
     reducers
-  );
+  )
 
-  return persistedReducer;
-};
+  return persistedReducer
+}

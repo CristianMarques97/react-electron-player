@@ -5,40 +5,40 @@ const {
   Menu,
   ipcMain,
   nativeTheme,
-} = require("electron");
-const backend = require("i18next-electron-fs-backend");
-const path = require("path");
-const url = require("url");
-const fs = require("fs");
+} = require('electron')
+const backend = require('i18next-electron-fs-backend')
+const path = require('path')
+const url = require('url')
+const fs = require('fs')
 
-let window;
-let isQuiting;
-let tray;
+let window
+let isQuiting
+let tray
 
-app.on("before-quit", function () {
-  isQuiting = true;
-});
+app.on('before-quit', function () {
+  isQuiting = true
+})
 
 function createWindow() {
-  tray = new Tray(path.join(__dirname, "src/assets/tray.png"));
+  tray = new Tray(path.join(__dirname, 'src/assets/tray.png'))
 
   tray.setContextMenu(
     Menu.buildFromTemplate([
       {
-        label: "Mostrar aplicativo",
+        label: 'Mostrar aplicativo',
         click: function () {
-          window.show();
+          window.show()
         },
       },
       {
-        label: "Sair",
+        label: 'Sair',
         click: function () {
-          isQuiting = true;
-          app.quit();
+          isQuiting = true
+          app.quit()
         },
       },
     ])
-  );
+  )
 
   window = new BrowserWindow({
     width: 1280,
@@ -53,75 +53,75 @@ function createWindow() {
       nodeIntegration: false,
       contextIsolation: true,
       enableRemoteModule: false,
-      preload: path.join(__dirname, "preload.js"),
+      preload: path.join(__dirname, 'preload.js'),
     },
-  });
+  })
 
-  backend.mainBindings(ipcMain, window, fs);
+  backend.mainBindings(ipcMain, window, fs)
 
   window.loadURL(
     process.env.ELECTRON_START_URL ||
       url.format({
-        pathname: path.join(__dirname, "/build/index.html"),
-        protocol: "file:",
+        pathname: path.join(__dirname, '/build/index.html'),
+        protocol: 'file:',
         slashes: true,
       })
-  );
+  )
 
-  ipcMain.on("minimize", () => {
-    window.minimize();
-  });
+  ipcMain.on('minimize', () => {
+    window.minimize()
+  })
 
-  ipcMain.on("close", () => {
-    window.hide();
-  });
+  ipcMain.on('close', () => {
+    window.hide()
+  })
 
-  ipcMain.on("maximize", () => {
+  ipcMain.on('maximize', () => {
     if (window?.isMaximized()) {
-      window.unmaximize();
+      window.unmaximize()
     } else {
-      window?.maximize();
+      window?.maximize()
     }
-  });
+  })
 
-  ipcMain.on("save-file", (event, { filePath, fileName, data }) => {
-    if (!fs.existsSync(path.join(app.getPath("appData"), "2id", filePath))) {
-      fs.mkdirSync(path.join(app.getPath("appData"), "2id", filePath), {
+  ipcMain.on('save-file', (event, { filePath, fileName, data }) => {
+    if (!fs.existsSync(path.join(app.getPath('appData'), '2id', filePath))) {
+      fs.mkdirSync(path.join(app.getPath('appData'), '2id', filePath), {
         recursive: true,
-      });
+      })
     }
 
     fs.writeFile(
-      path.join(app.getPath("appData"), "2id", filePath, fileName),
+      path.join(app.getPath('appData'), '2id', filePath, fileName),
       data,
       (err) => {
         if (err) {
-          console.log(err);
+          console.log(err)
         }
       }
-    );
-  });
+    )
+  })
 }
 
-app.on("before-quit", () => {
-  isQuiting = true;
-});
+app.on('before-quit', () => {
+  isQuiting = true
+})
 
-app.on("ready", createWindow);
+app.on('ready', createWindow)
 
-app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
-    app.quit();
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit()
   }
-});
+})
 
-app.on("activate", () => {
+app.on('activate', () => {
   if (mainWindow === null) {
-    createWindow();
+    createWindow()
   }
-});
+})
 
 app.on(
-  "window-all-closed",
-  () => process.platform !== "darwin" && app.quit() // "darwin" targets macOS only.
-);
+  'window-all-closed',
+  () => process.platform !== 'darwin' && app.quit() // "darwin" targets macOS only.
+)

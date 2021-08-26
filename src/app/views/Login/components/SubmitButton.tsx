@@ -1,16 +1,25 @@
-import { Button, makeStyles } from "@material-ui/core";
+import { Button, makeStyles } from '@material-ui/core'
+
+const useStyles = makeStyles(() => ({
+  button: {
+    padding: 12,
+    borderRadius: 40,
+    fontFamily: 'sansProRegular',
+  },
+}))
 
 interface SubmitButtonProps {
-  text: string;
-  onclick: () => void;
-  color?: "inherit" | "primary" | "secondary" | "default";
+  text: string
+  onclick: () => void
+  color?: 'inherit' | 'primary' | 'secondary' | 'default'
 }
+
 export default function SubmitButton({
   text,
   onclick,
   color,
 }: SubmitButtonProps) {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <Button
       className={classes.button}
@@ -21,13 +30,9 @@ export default function SubmitButton({
     >
       {text}
     </Button>
-  );
+  )
 }
 
-const useStyles = makeStyles((theme) => ({
-  button: {
-    padding: 12,
-    borderRadius: 40,
-    fontFamily: "sansProRegular",
-  },
-}));
+SubmitButton.defaultProps = {
+  color: '',
+}
