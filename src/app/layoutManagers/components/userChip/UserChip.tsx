@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.light + "35",
     padding: 5,
     borderRadius: 60,
-    maxWidth: 460,
+    maxWidth: 600,
     width: "100%",
   },
   user: {

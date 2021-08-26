@@ -1,5 +1,7 @@
 const { contextBridge, ipcRenderer } = require("electron");
-const ipcChannels = ["minimize", "maximize", "close", "save-file"];
+const backend = require("i18next-electron-fs-backend");
+
+const ipcChannels = ["minimize", "maximize", "close", "save-file", "localize"];
 
 // Expose protected methods that allow the renderer process to use
 // the ipcRenderer without exposing the entire object
@@ -15,4 +17,5 @@ contextBridge.exposeInMainWorld("api", {
       ipcRenderer.on(channel, (event, ...args) => func(...args));
     }
   },
+  i18nextElectronBackend: backend.preloadBindings(ipcRenderer),
 });

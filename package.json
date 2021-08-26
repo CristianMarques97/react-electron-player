@@ -1,8 +1,8 @@
 {
-  "name": "react_typescript_boilerplate",
-  "description": "React with Typescript boilerplate Electron app",
-  "author": "Cristian Marques",
-  "productName": "Electron Boilerplate",
+  "name": "2id_player",
+  "description": "Player da 2 id",
+  "author": "2id",
+  "productName": "Player 2id",
   "version": "0.0.1",
   "private": true,
   "homepage": "./",
@@ -51,7 +51,7 @@
     "history": "^5.0.0",
     "i18next": "^20.3.5",
     "i18next-browser-languagedetector": "^6.1.2",
-    "i18next-http-backend": "^1.3.0",
+    "i18next-electron-fs-backend": "^1.3.8",
     "react": "^17.0.2",
     "react-i18next": "^11.11.4",
     "react-redux": "^7.2.4",
@@ -88,7 +88,7 @@
     "forge": {
       "packagerConfig": {
         "icon": "./assets/logo512.png",
-        "name": "react_typescript_boilerplate",
+        "name": "2id_player",
         "executableName": "Electron Boilerplate",
         "asar": true,
         "bin": "Electron Boilerplate"
@@ -104,7 +104,7 @@
             "darwin"
           ],
           "config": {
-            "name": "react_typescript_boilerplate",
+            "name": "2id_player",
             "executableName": "Electron Boilerplate",
             "bin": "Electron Boilerplate"
           }
@@ -112,7 +112,7 @@
         {
           "name": "@electron-forge/maker-deb",
           "config": {
-            "name": "react_typescript_boilerplate",
+            "name": "2id_player",
             "executableName": "Electron Boilerplate",
             "bin": "Electron Boilerplate"
           }
@@ -120,7 +120,7 @@
         {
           "name": "@electron-forge/maker-rpm",
           "config": {
-            "name": "react_typescript_boilerplate",
+            "name": "2id_player",
             "executableName": "Electron Boilerplate",
             "bin": "Electron Boilerplate"
           }

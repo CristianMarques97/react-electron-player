@@ -6,9 +6,11 @@ const {
   ipcMain,
   nativeTheme,
 } = require("electron");
+const backend = require("i18next-electron-fs-backend");
 const path = require("path");
 const url = require("url");
 const fs = require("fs");
+
 let window;
 let isQuiting;
 let tray;
@@ -54,6 +56,8 @@ function createWindow() {
       preload: path.join(__dirname, "preload.js"),
     },
   });
+
+  backend.mainBindings(ipcMain, window, fs);
 
   window.loadURL(
     process.env.ELECTRON_START_URL ||
