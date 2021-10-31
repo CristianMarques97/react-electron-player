@@ -1,6 +1,7 @@
 # react-electron-player
 
 Aplicação de player com React e Electron
+and testing autoupdate
 
 # build commands
 
